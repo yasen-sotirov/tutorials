@@ -1,4 +1,5 @@
 "CHARACTER TYPES" #
+# https://www.youtube.com/watch?v=85pG_pDkITY&ab_channel=DerekBanas
 
 '''
 TRUE - 1, t, y, yes, on
