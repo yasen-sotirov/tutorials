@@ -1,5 +1,6 @@
 "CHARACTER TYPES" #
 # https://www.youtube.com/watch?v=85pG_pDkITY&ab_channel=DerekBanas
+# https://github.com/derekbanas/postgresql-tutorial/blob/main/PostgreSQL%20Tutorial.txt
 
 '''
 TRUE - 1, t, y, yes, on

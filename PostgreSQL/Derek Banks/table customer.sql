@@ -603,7 +603,10 @@ WHERE item.id = sales_item.item_id
 
 
 
--- 1:34:22 VIEWS - Views are select statements thats result is stored in your database. Let's create a view that contains our main purchase order info.
+
+
+---------------------------------------------------------
+-- VIEWS 
  
 CREATE VIEW purchase_order_overview AS
 SELECT sales_order.purchase_order_number, customer.company, sales_item.quantity, product.supplier, product.name, item.price, 
@@ -626,11 +629,31 @@ ORDER BY purchase_order_number;
 SELECT * FROM purchase_order_overview;
 
 
+-- Изтриване на view
+DROP VIEW purchase_order_overview;
 
 
 
 
+-------------------------------------------------
+-- СЪЗДАВАНЕ НА ФУНКЦИИ
 
+CREATE OR REPLACE FUNCTION fn_add_ints(int, int)
+RETURNs int AS
+$body$
+SELECT $1 + $2;
+$body$
+LANGUAGE SQL
+
+SELECT fn_add_ints(2, 8);
+
+
+CREATE OR REPLACE FUNCTION fn_update_employee_state(int, int)
+RETURNs int AS
+$body$
+SELECT $1 + $2;
+$body$
+LANGUAGE SQL
 
 
 
