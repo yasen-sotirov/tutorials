@@ -648,12 +648,181 @@ LANGUAGE SQL
 SELECT fn_add_ints(2, 8);
 
 
-CREATE OR REPLACE FUNCTION fn_update_employee_state(int, int)
-RETURNs int AS
+
+CREATE OR REPLACE FUNCTION fn_update_employee_state()
+RETURNs void AS
 $body$
-SELECT $1 + $2;
+	UPDATE sales_person
+	SET state = 'PA'
+	WHERE state is null
 $body$
 LANGUAGE SQL
+
+SELECT fn_update_employee_state();
+
+
+
+
+CREATE OR REPLACE FUNCTION fn_max_product_price()
+RETURNs numeric AS
+$body$
+	SELECT MAX(price)
+	FROM item
+$body$
+LANGUAGE SQL
+
+SELECT fn_max_product_price();
+
+
+
+
+CREATE OR REPLACE FUNCTION fn_get_total_inventory_value()
+RETURNs numeric AS
+$body$
+	SELECT SUM(price)
+	FROM item
+$body$
+LANGUAGE SQL
+
+SELECT fn_get_total_inventory_value();
+
+
+
+CREATE OR REPLACE FUNCTION fn_number_customer_no_phone()
+RETURNs numeric AS
+$body$
+	SELECT count(*)
+	FROM customer
+	WHERE phone is NULL;
+$body$
+LANGUAGE SQL
+
+SELECT fn_number_customer_no_phone();
+
+
+
+CREATE OR REPLACE FUNCTION fn_number_customer_from_state(state_name char(2))
+RETURNs numeric AS
+$body$
+	SELECT count(*)
+	FROM customer
+	WHERE state = state_name;
+$body$
+LANGUAGE SQL
+
+SELECT fn_number_customer_from_state('TX');
+
+
+
+
+CREATE OR REPLACE FUNCTION fn_number_get_orders_from_customer(f_name varchar, s_name varchar)
+RETURNS numeric as
+$body$
+	SELECT COUNT(*)
+	FROM sales_order
+	NATURAL JOIN customer
+	WHERE customer.first_name = f_name AND customer.last_name = s_name;
+$body$
+LANGUAGE SQL
+
+SELECT fn_number_get_orders_from_customer('Christopher', 'Jones')
+
+
+
+CREATE OR REPLACE FUNCTION fn_get_last_order()
+RETURNS sales_order as 
+$body$
+	SELECT *
+	FROM sales_order
+	ORDER BY time_order_taken DESC
+	LIMIT 1;
+$body$
+LANGUAGE SQL
+
+SELECT fn_get_last_order();		-- връща на един ред
+
+SELECT (fn_get_last_order()).*;		-- връща в табличен вид
+
+
+
+
+-- ФУНКЦИИ PL/PG
+CREATE OR REPLACE FUNCTION fn_get_product_price(product_name varchar)
+RETURNS numeric AS 
+$body$
+BEGIN
+	RETURN item.price
+	FROM item
+	NATURAL JOIN product
+	WHERE product.name = product_name;
+END
+$body$
+LANGUAGE plpgsql
+
+SELECT fn_get_product_price('Grandview')
+
+
+
+
+-- SUM NUMS
+CREATE OR REPLACE FUNCTION fn_get_sum(val1 int, val2 int)
+RETURNS int AS 
+$body$
+DECLARE
+	answer int;
+BEGIN
+	answer := val1 + val2;
+	RETURN answer;
+END
+$body$
+LANGUAGE plpgsql
+
+SELECT fn_get_sum(4, 5)
+
+
+
+
+-- RANDOM NUMS
+CREATE OR REPLACE FUNCTION fn_get_rando_num(max_val int, min_val int)
+RETURNS int AS 
+$body$
+DECLARE
+	rand int;
+BEGIN
+	SELECT random() * (max_val - min_val) + min_val INTO rand;
+	RETURN rand;
+END
+$body$
+LANGUAGE plpgsql
+
+SELECT fn_get_rando_num(1, 50)
+
+
+
+-- RANDOM SALES PERSON
+CREATE OR REPLACE FUNCTION fn_get_random_salesperson()
+RETURNS varchar AS
+$body$
+	DECLARE
+	rand int;
+	empl record;
+BEGIN
+	SELECT random() * (5-1) + 1 INTO rand;
+	SELECT *
+	FROM sales_person
+	INTO empl
+	WHERE id = rand;
+	RETURN CONCAT(empl.first_name, ' ', empl.last_name);
+END
+$body$
+LANGUAGE plpgsql
+
+SELECT fn_get_random_salesperson();
+
+
+
+
+
 
 
 
