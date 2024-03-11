@@ -2,6 +2,8 @@
     # https://www.youtube.com/watch?v=85pG_pDkITY&ab_channel=DerekBanas
     # https://github.com/derekbanas/postgresql-tutorial/blob/main/PostgreSQL%20Tutorial.txt
 
+    # Негърът с 60 клипчета курс
+    # https://www.youtube.com/watch?v=XQ_6G0iCyMQ&list=PLwvrYc43l1MxAEOI_KwGe8l42uJxMoKeS&ab_channel=Amigoscode
 
 "СВЪРЗВАНЕ С ПИТОН"     # https://www.youtube.com/watch?v=miEFm1CyjfM&ab_channel=NeuralNine
 import psycopg2
@@ -96,7 +98,7 @@ SELF JOIN
     tableA.some_col = tableB.other_col
         
 
-ДЕБЪГВАНЕ НА ФУНКЦИИ
+DEBUGGER
     https://www.youtube.com/watch?v=wYyUjmnsbT4&list=PLownlFUq_rL6iJF0hiSXKT0cnIAtBgHoX&index=2&ab_channel=EDB
     
     
