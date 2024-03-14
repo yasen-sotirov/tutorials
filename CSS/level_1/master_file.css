@@ -1,0 +1,14 @@
+/* CSS FILE */
+
+h1{
+  color: #5ea617;
+}
+
+
+/* list Items */
+li{
+  color: rgb(23, 85, 166);
+}
+
+/* включва alpha chanel */
+h4{color: rgba(23, 85, 166, 0.5)}

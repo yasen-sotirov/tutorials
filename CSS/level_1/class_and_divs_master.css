@@ -1,0 +1,38 @@
+/* СЕЛЕКТОРИ
+https://www.w3schools.com/cssref/css_selectors.php
+
+точкaта показва че е клас
+класовете може да се отнасят за много елементи*/
+
+.firstDiv{
+  color: orange;
+}
+
+.secondDiv{
+  color: pink;
+}
+
+
+/* хаштагът се отнася за id  и само за един елемент */
+
+#singledout{
+  color: grey;
+  text-decoration: overline underline;
+}
+
+
+
+/* селектира всички неподредени листове в h3 */
+h3 + ul{
+  border: 4px dotted purple;
+}
+
+
+li a{
+  color:red;
+}
+
+li a[href="http://www.gmail.com"]{
+  color: blue;
+  border: 2px solid orange;
+}
