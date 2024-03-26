@@ -40,8 +40,14 @@ let students = 30;
 // students ++
 students --
 
-
-
-
-
 console.log(students)
+
+
+
+let x;
+let y;
+let z;
+
+x = Number(x);
+y = String(y);
+z = Boolean(z);
