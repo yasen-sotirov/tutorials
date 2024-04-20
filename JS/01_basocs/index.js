@@ -1,7 +1,3 @@
-// console.log(`Hello`);
-// console.log(`Pizza`);
-// window.alert(`This is an alert!`);
-
 
 
 
